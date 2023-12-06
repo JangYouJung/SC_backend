@@ -7,7 +7,7 @@ const expressSession = require("express-session");
 var server = require('http').createServer(app);
 var io = require('socket.io')(server, {
   cors: true,
-  origins: ['http://localhost:8080'],
+  origins: ['http://sc-frontend-service:80'],
 });
 
 const mainRouter = require("./routes/main");
@@ -36,10 +36,10 @@ app.use(expressSession({
   }
 }));
 
-app.use("/", mainRouter);
-app.use("/login", loginRouter);
-app.use("/signup", signUpRouter);
-app.use("/board", boardRouter);
-app.use("/chat", chatRouter);
+app.use("/api", mainRouter);
+app.use("/api/login", loginRouter);
+app.use("/api/signup", signUpRouter);
+app.use("/api/board", boardRouter);
+app.use("/api/chat", chatRouter);
 
 module.exports = server;
