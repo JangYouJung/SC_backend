@@ -2,10 +2,13 @@ const db = require("./db");
 const SocketIO = require("socket.io");
 const http = require("./app");
 const io = SocketIO(http, {
+  path: '/socket.io'
+  /*
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  */
 });
 
 function saveMessage(data) {
