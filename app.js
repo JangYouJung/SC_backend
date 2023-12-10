@@ -10,12 +10,22 @@ var io = require('socket.io')(server, {
   origins: ['http://sc-chatting.com'],
 });
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
+
 const mainRouter = require("./routes/main");
 const loginRouter = require("./routes/login");
 const signUpRouter = require("./routes/signup");
 const boardRouter = require("./routes/board");
 const chatRouter = require("./routes/chat");
 const cors = require('cors');
+const { error } = require("console");
 app.use(cors({
   origin: true,
   credentials: true
