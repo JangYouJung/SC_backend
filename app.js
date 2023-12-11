@@ -18,6 +18,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  console.log(`MY ROGFILE ${req.method} ${req.url}`);
+  console.log(res);
+  next();
+});
+
+
+
 
 const mainRouter = require("./routes/main");
 const loginRouter = require("./routes/login");
