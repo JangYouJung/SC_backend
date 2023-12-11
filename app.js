@@ -8,7 +8,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server, {
   cors: true,
   path: '/socket.io',
-  //origins: ['http://sc-chatting.com:80'],
+  //origins: ['http://sc-chatting.ddns.net:80'],
 });
 
 const mainRouter = require("./routes/main");
