@@ -7,7 +7,8 @@ const expressSession = require("express-session");
 var server = require('http').createServer(app);
 var io = require('socket.io')(server, {
   cors: true,
-  origins: ['http://sc-chatting.com'],
+  path: '/socket.io',
+  //origins: ['http://sc-chatting.com:80'],
 });
 
 app.use((req, res, next) => {
