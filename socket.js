@@ -29,7 +29,10 @@ function saveDm(data) {
   })
 }
 
-io.on('connection', function (socket) {
+io.on('connection', function (socket, err) {
+  if (err) {
+    console.log(err);
+  }
   console.log('Connect from Client Chat: ' + socket.id);
   socket.on('send', function (data) {
     saveMessage(data);

@@ -11,12 +11,30 @@ var io = require('socket.io')(server, {
   //origins: ['http://sc-chatting.ddns.net:80'],
 });
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log(`MY ROGFILE ${req.method} ${req.url}`);
+  console.log(res);
+  next();
+});
+
+
+
+
 const mainRouter = require("./routes/main");
 const loginRouter = require("./routes/login");
 const signUpRouter = require("./routes/signup");
 const boardRouter = require("./routes/board");
 const chatRouter = require("./routes/chat");
 const cors = require('cors');
+const { error } = require("console");
 app.use(cors({
   origin: true,
   credentials: true
