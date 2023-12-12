@@ -8,6 +8,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server, {
   cors: true,
   path: '/socket.io',
+  transports: ["websocket"]
   //origins: ['http://sc-chatting.ddns.net:80'],
 });
 
