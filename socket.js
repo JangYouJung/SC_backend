@@ -2,7 +2,8 @@ const db = require("./db");
 const SocketIO = require("socket.io");
 const http = require("./app");
 const io = SocketIO(http, {
-  path: '/socket.io'
+  path: '/socket.io',
+  transports: ["websocket"]
   /*
   cors: {
     origin: "*",
